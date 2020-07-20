@@ -75,7 +75,7 @@ create_keys() {
         echo "$GROUP_NAME,$saname@$PROJECT.iam.gserviceaccount.com,USER,MEMBER" | tee -a $KEYS_DIR/members.csv $KEYS_DIR/allmembers.csv
         sleep $CYCLE_DELAY
     done
-    MEMBER_COUNT=`cat /opt/sa/members.csv | grep "gservice" | wc -l`
+    MEMBER_COUNT=`cat $KEYS_DIR/members.csv | grep "gservice" | wc -l`
     echo -e "\nNumber of service accounts in members.csv = $MEMBER_COUNT"
     TOTAL_JSONS_NOW=`ls $KEYS_DIR | grep ".json" | wc -l`
     let TOTAL_JSONS_MADE=$TOTAL_JSONS_NOW-$TOTAL_JSONS_BEF
